@@ -10,7 +10,3 @@ output vpc {
             }) 
     }
 }
-
-output test {
-    value = aws_route_table.route_tables.vpcs[VPC-DEV.RT-DEV-PUB].route_table
-}

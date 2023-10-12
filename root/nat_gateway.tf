@@ -1,6 +1,6 @@
 resource "aws_eip" "nat_ips" {
     for_each    = local.vpc_nat_ips
-    vpc         = true
+    domain         = "vpc"
     #tags        = merge({ "Name" = "${each.value.nat_gateway.eip_prefix == null ? "EIP" : each.value.nat_gateway.eip_prefix}_${each.value.name}" }, each.value.nat_gateway.tags)
     tags        = merge({Name = "${each.value.nat_gateway.eip_prefix == null ? format("EIP_${each.value.name}") : each.value.nat_gateway.eip_prefix}"}, each.value.nat_gateway.tags)
 }

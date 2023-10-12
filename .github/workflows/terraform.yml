@@ -100,7 +100,6 @@ jobs:
         chmod +x apply.sh; \
         ./apply.sh hee-dev
 
-jobs:
   terraform:
     name: 'Infra Delete'
     runs-on: ubuntu-latest

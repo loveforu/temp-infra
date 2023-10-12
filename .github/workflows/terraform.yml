@@ -53,8 +53,8 @@ permissions:
   contents: read
 
 jobs:
-  infra-create:
-    name: 'Infra Create'
+  vpc-create:
+    name: 'VPC Create'
     runs-on: ubuntu-latest
     environment: production
 
@@ -79,6 +79,7 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: |
+        cd vpc; \
         chmod +x setenv; \
         source ./setenv conf/backend/hee-dev
 
@@ -89,7 +90,7 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: |
-        cd root; \
+        cd vpc/root; \
         terraform plan -var-file=../conf/hee/hee-dev.tfvars
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
@@ -97,12 +98,13 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: |
+        cd vpc; \
         chmod +x apply.sh; \
         ./apply.sh hee-dev
 
 
-  infra-delete:
-    name: 'Infra Delete'
+  vpc-delete:
+    name: 'VPC Delete'
     runs-on: ubuntu-latest
     environment: delete
 
@@ -127,6 +129,7 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: |
+        cd vpc; \
         chmod +x setenv; \
         source ./setenv conf/backend/hee-dev
 
@@ -137,5 +140,6 @@ jobs:
     - name: Terraform destroy
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: |
+        cd vpc; \
         chmod +x destroy.sh; \
         ./destroy.sh hee-dev

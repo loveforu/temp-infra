@@ -86,7 +86,7 @@ jobs:
     - name: Terraform Init
       run: |
         chmod +x setenv; \
-        ./setenv conf/backend/hee-dev
+        source ./setenv conf/backend/hee-dev
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format

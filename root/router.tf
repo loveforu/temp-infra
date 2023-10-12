@@ -52,7 +52,6 @@ resource "aws_route_table" "route_tables" {
                             ? "" : route.value[1]
                     )
             )
-            instance_id                 = substr(route.value[1], 0, 2)     != "i-"   ? "" : route.value[1]
             nat_gateway_id              = (
                 route.value[1] == "NEW NAT" ? aws_nat_gateway.nat_gateways["${each.value.vpc_name}.${route.value[2]}"].id
                     : (

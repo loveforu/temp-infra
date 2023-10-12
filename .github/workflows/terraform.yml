@@ -84,7 +84,9 @@ jobs:
         
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: ./setenv conf/backend/hee-dev
+      run: |
+        chmod +x setenv \
+        ./setenv conf/backend/hee-dev
 
     # Checks that all Terraform configuration files adhere to a canonical format
     # - name: Terraform Format

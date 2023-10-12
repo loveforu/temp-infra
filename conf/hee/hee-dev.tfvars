@@ -291,8 +291,8 @@ vpcs = {
                     ["0.0.0.0/0", "INTERNET", null],
                 ] # End Of routes
                 subnets             = [
-                    "SBN-DEV-PUBLIC-AZ2A",
-                    "SBN-DEV-PUBLIC-AZ2C"
+                    "SBN-DEV-PUBLIC-AZ2A-HEE",
+                    "SBN-DEV-PUBLIC-AZ2C-HEE"
                 ] # End Of subnets
                 gateways            = [] # End Of gateways
             } # End Of RT-DEV-PUB

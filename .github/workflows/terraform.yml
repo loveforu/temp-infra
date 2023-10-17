@@ -56,7 +56,7 @@ jobs:
   vpc-create:
     name: 'VPC Create'
     runs-on: ubuntu-latest
-    environment: production
+    environment: createvpc
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -106,7 +106,7 @@ jobs:
   vpc-delete:
     name: 'VPC Delete'
     runs-on: ubuntu-latest
-    environment: delete
+    environment: deletevpc
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:

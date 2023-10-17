@@ -154,6 +154,7 @@ eks = {
             }
             tags = {
                 "Billing"   = "hee"
+                "AutoOff"	= "False"
             }
         },
         EC2-AN2-DEV-HEE-NODE-INGRESS = {
@@ -188,6 +189,7 @@ eks = {
             }
             tags = {
                 "Billing"   = "hee"
+                "AutoOff"	= "False"
             }
         }
     }

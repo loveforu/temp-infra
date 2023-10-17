@@ -172,7 +172,8 @@ jobs:
       run: |
         cd security-group; \
         chmod +x setenv; \
-        source ./setenv conf/backend/hee-dev
+        source ./setenv conf/backend/hee-dev; \
+        cat ./root/backend.tf
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
@@ -222,8 +223,7 @@ jobs:
       run: |
         cd security-group; \
         chmod +x setenv; \
-        source ./setenv conf/backend/hee-dev; \
-        cat ./root/backend.tf
+        source ./setenv conf/backend/hee-dev
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format

@@ -324,4 +324,4 @@ jobs:
       run: |
         cd eks; \
         chmod +x destroy.sh; \
-        ./destroy.sh hee-dev
+        ./destroy.sh hee-dev 

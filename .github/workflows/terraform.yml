@@ -173,7 +173,7 @@ jobs:
         cd security-group; \
         chmod +x setenv; \
         source ./setenv conf/backend/hee-dev; \
-        cat ./root/backend.tf
+        ls -lrtR .
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format

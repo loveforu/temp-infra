@@ -122,7 +122,77 @@ eks = {
         }
     ]
 
-    node_groups = {}
+    node_groups = {
+        EC2-AN2-DEV-HEE-NODE-MGMT = {
+            ng_name = "EC2-AN2-DEV-HEE-NODE-MGMT"
+            ami_type = "AL2_x86_64"
+            subnet_ids = ["SBN-DEV-EKS-POD-PRIVATE-AZ2A-HEE","SBN-DEV-EKS-POD-PRIVATE-AZ2C-HEE"]
+            min_size       = 0
+            max_size       = 0
+            desired_size = 0
+            instance_types = ["t3.large"]
+            capacity_type = "ON_DEMAND"
+            labels = {
+                "System" = "MGMT"
+            }
+
+            iam_role_use_name_prefix   = false
+            enable_bootstrap_user_data = false
+
+            block_device_mappings = [
+                {
+                    device_name = "/dev/xvda"
+                    ebs = {
+                        encrypted = true
+                        volume_size = 20
+                        volume_type = "gp3"
+                        kms_key_id = "arn:aws:kms:ap-northeast-2:058899106981:key/affe6c28-29ac-4c91-85cf-3f94785c34eb"
+                    }
+                }
+            ]
+            iam_role_additional_policies = {
+            }
+            tags = {
+                "Billing"   = "hee"
+                "AutoOff"	= "False"
+            }
+        },
+        EC2-AN2-DEV-HEE-NODE-INGRESS = {
+            ng_name = "EC2-AN2-DEV-HEE-NODE-INGRESS"
+            ami_type = "AL2_x86_64"
+            subnet_ids = ["SBN-DEV-EKS-POD-PRIVATE-AZ2A-HEE","SBN-DEV-EKS-POD-PRIVATE-AZ2C-HEE"]
+            min_size       = 0
+            max_size       = 0
+            desired_size = 0
+            instance_types = ["t3.xlarge"]
+            capacity_type = "ON_DEMAND"
+            labels = {
+                "System" = "INGRESS"
+            }
+
+            iam_role_use_name_prefix   = false
+            enable_bootstrap_user_data = false
+
+            block_device_mappings = [
+                {
+                    device_name = "/dev/xvda"
+                    ebs = {
+                        encrypted = true
+                        volume_size = 20
+                        volume_type = "gp3"
+                        kms_key_id = "arn:aws:kms:ap-northeast-2:058899106981:key/affe6c28-29ac-4c91-85cf-3f94785c34eb"
+                    }
+                }
+            ]
+
+            iam_role_additional_policies = {
+            }
+            tags = {
+                "Billing"   = "hee"
+                "AutoOff"	= "False"
+            }
+        }
+    }
 
     tags = {
         "Name" = "EKS-AN2-DEV-HEE"

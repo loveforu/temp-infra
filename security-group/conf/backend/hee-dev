@@ -1,6 +1,6 @@
 environment = "dev"
 s3_bucket = "codepipeline-artifact-dev-hee-backend"
-s3_folder_project = "htspoc"
+s3_folder_project = "hee"
 s3_bucket_region = "ap-northeast-2"
 aws_region = "ap-northeast-2"
-s3_tfstate_file = "terraform_htspoc-dev_sg.tfstate"
+s3_tfstate_file = "terraform_hee-dev_sg.tfstate"

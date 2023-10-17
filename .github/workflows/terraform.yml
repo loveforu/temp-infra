@@ -54,7 +54,7 @@ permissions:
 
 jobs:
   vpc-create:
-    name: 'VPC Create'
+    name: '1. VPC Create'
     runs-on: ubuntu-latest
     environment: createvpc
 
@@ -104,7 +104,7 @@ jobs:
 
 
   vpc-delete:
-    name: 'VPC Delete'
+    name: '1. VPC Delete'
     runs-on: ubuntu-latest
     environment: deletevpc
 
@@ -145,7 +145,7 @@ jobs:
         ./destroy.sh hee-dev
 
   sg-create:
-    name: 'SG Create'
+    name: '2. SG Create'
     runs-on: ubuntu-latest
     environment: createsg
 
@@ -196,7 +196,7 @@ jobs:
 
 
   sg-delete:
-    name: 'SG Delete'
+    name: '2. SG Delete'
     runs-on: ubuntu-latest
     environment: deletesg
 

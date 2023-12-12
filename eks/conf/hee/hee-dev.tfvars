@@ -15,20 +15,16 @@ eks = {
     cluster_name = "EKS-AN2-DEV-HEE"
     cluster_version = "1.28"
 
-    cluster_endpoint_public_access  = true
-    cluster_endpoint_public_access_cidrs = ["27.122.140.10/32"]
+    cluster_endpoint_public_access  = false
+    cluster_endpoint_public_access_cidrs = []
 
     log_group_retention = 5
     iam_role_arn = null
     create_iam_role = true
     iam_role_name = "ROLE-DEV-HEE-EKS-NODE"
 
-    kms_key_administrators = [
-        "arn:aws:iam::056231226580:user/hee"
-        ]
-    kms_key_owners = [
-        "arn:aws:iam::056231226580:user/hee"
-        ]
+    kms_key_administrators = []
+    kms_key_owners = []
 
     node_security_group_enable_recommended_rules = false
 
@@ -114,13 +110,7 @@ eks = {
 
     // AWS_AUTHs
     aws_auth_roles                         = []
-    aws_auth_users                         = [
-        {
-            userarn  = "arn:aws:iam::056231226580:user/hee"
-            username = "hee"
-            groups   = ["system:masters"]
-        }
-    ]
+    aws_auth_users                         = []
 
     node_groups = {}
 

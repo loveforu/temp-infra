@@ -108,7 +108,7 @@ eks = {
 
     }
 
-    // AWS_AUTHs
+    // AWS_AUTHs = 
     aws_auth_roles                         = []
     aws_auth_users                         = []
 

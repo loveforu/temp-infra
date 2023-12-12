@@ -54,7 +54,7 @@ module "app_cluster" {
 
   eks_managed_node_groups = local.node_groups
   
-  manage_aws_auth_configmap = true
+  manage_aws_auth_configmap = false
 
   aws_auth_roles = var.eks.aws_auth_roles
   aws_auth_users = var.eks.aws_auth_users

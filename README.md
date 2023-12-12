@@ -2,5 +2,3 @@
 temp infra build repo
 
 # application list
-
-# todo list

@@ -72,9 +72,7 @@ vpcs = {
                 "SBN-BEDROCK-AP-PRIVATE-AZ2A-POC",
                 "SBN-BEDROCK-AP-PRIVATE-AZ2C-POC",
                 "SBN-BEDROCK-DB-PRIVATE-AZ2A-POC",
-                "SBN-BEDROCK-DB-PRIVATE-AZ2C-POC",
-                "SBN-BEDROCK-EKS-POD-PRIVATE-AZ2A-POC",
-                "SBN-BEDROCK-EKS-POD-PRIVATE-AZ2C-POC"
+                "SBN-BEDROCK-DB-PRIVATE-AZ2C-POC"
             ]
             ingresses   = [
                 {
@@ -203,38 +201,6 @@ vpcs = {
                 }
             }
 
-            "SBN-BEDROCK-EKS-POD-PRIVATE-AZ2A-POC" = {
-                availability_zone               = "ap-northeast-2a"
-                cidr_block                      = "100.64.1.0/24"
-                ipv6_cidr_block                 = null
-                map_public_ip_on_launch         = false
-                outpost_arn                     = null
-                assign_ipv6_address_on_creation = false
-                tags                            = {
-                    "Name"      = "SBN-BEDROCK-EKS-POD-PRIVATE-AZ2A-POC"
-                    "Service"   = ""
-                    "Stage"     = "BEDROCK"
-                    "Billing"   = "poc"
-                    "kubernetes.io/cluster/EKS-BEDROCK-POC" = "shared"
-                }
-            }
-
-            "SBN-BEDROCK-EKS-POD-PRIVATE-AZ2C-POC" = {
-                availability_zone               = "ap-northeast-2c"
-                cidr_block                      = "100.64.2.0/24"
-                ipv6_cidr_block                 = null
-                map_public_ip_on_launch         = false
-                outpost_arn                     = null
-                assign_ipv6_address_on_creation = false
-                tags                            = {
-                    "Name"      = "SBN-BEDROCK-EKS-POD-PRIVATE-AZ2C-POC"
-                    "Service"   = ""
-                    "Stage"     = "BEDROCK"
-                    "Billing"   = "poc"
-                    "kubernetes.io/cluster/EKS-BEDROCK-POC" = "shared"
-                }
-            }
-
             "SBN-BEDROCK-DB-PRIVATE-AZ2A-POC" = {
                 availability_zone               = "ap-northeast-2a"
                 cidr_block                      = "172.16.0.64/27"
@@ -328,8 +294,7 @@ vpcs = {
                 ] # End Of routes
                 subnets             = [
                     "SBN-BEDROCK-AP-PRIVATE-AZ2A-POC",
-                    "SBN-BEDROCK-DB-PRIVATE-AZ2A-POC",
-                    "SBN-BEDROCK-EKS-POD-PRIVATE-AZ2A-POC"
+                    "SBN-BEDROCK-DB-PRIVATE-AZ2A-POC"
                 ] # End Of subnets
                 gateways            = [] # End Of gateways
             } # End Of RT-BEDROCK-PRIV-1
@@ -347,8 +312,7 @@ vpcs = {
                 ] # End Of routes
                 subnets             = [
                     "SBN-BEDROCK-AP-PRIVATE-AZ2C-POC",
-                    "SBN-BEDROCK-DB-PRIVATE-AZ2C-POC",
-                    "SBN-BEDROCK-EKS-POD-PRIVATE-AZ2C-POC"
+                    "SBN-BEDROCK-DB-PRIVATE-AZ2C-POC"
                 ] # End Of subnets
                 gateways            = [] # End Of gateways
             } # End Of RT-BEDROCK-PRIV-2

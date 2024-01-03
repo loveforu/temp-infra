@@ -55,7 +55,7 @@ vpcs = {
         } # End Of nat_gateways
 
         dhcp_options                      = {
-            domain_name             = "ap-northeast-2.compute.internal"
+            domain_name             = "us-east-1.compute.internal"
             domain_name_servers     = ["AmazonProvidedDNS"]
             ntp_servers             = null
             netbios_name_servers    = null
@@ -108,7 +108,7 @@ vpcs = {
         subnets     = {
 
             # "SBN-BEDROCK-TGW-PRIVATE-AZ2A" = {
-            #     availability_zone               = "ap-northeast-2a"
+            #     availability_zone               = "us-east-1a"
             #     cidr_block                      = "100.64.3.64/28"
             #     ipv6_cidr_block                 = null
             #     map_public_ip_on_launch         = false
@@ -123,7 +123,7 @@ vpcs = {
             # }
 
             # "SBN-BEDROCK-TGW-PRIVATE-AZ2C" = {
-            #     availability_zone               = "ap-northeast-2c"
+            #     availability_zone               = "us-east-1c"
             #     cidr_block                      = "100.64.3.80/28"
             #     ipv6_cidr_block                 = null
             #     map_public_ip_on_launch         = false
@@ -138,7 +138,7 @@ vpcs = {
             # }
 
             "SBN-BEDROCK-PUBLIC-AZ2A-POC" = {
-                availability_zone               = "ap-northeast-2a"
+                availability_zone               = "us-east-1a"
                 cidr_block                      = "100.64.3.0/27"
                 ipv6_cidr_block                 = null
                 map_public_ip_on_launch         = false
@@ -153,7 +153,7 @@ vpcs = {
             }
 
             "SBN-BEDROCK-PUBLIC-AZ2C-POC" = {
-                availability_zone               = "ap-northeast-2c"
+                availability_zone               = "us-east-1c"
                 cidr_block                      = "100.64.3.32/27"
                 ipv6_cidr_block                 = null
                 map_public_ip_on_launch         = false
@@ -168,7 +168,7 @@ vpcs = {
             }
 
             "SBN-BEDROCK-AP-PRIVATE-AZ2A-POC" = {
-                availability_zone               = "ap-northeast-2a"
+                availability_zone               = "us-east-1a"
                 cidr_block                      = "172.16.0.0/27"
                 ipv6_cidr_block                 = null
                 map_public_ip_on_launch         = false
@@ -185,7 +185,7 @@ vpcs = {
             }
 
             "SBN-BEDROCK-AP-PRIVATE-AZ2C-POC" = {
-                availability_zone               = "ap-northeast-2c"
+                availability_zone               = "us-east-1c"
                 cidr_block                      = "172.16.0.32/27"
                 ipv6_cidr_block                 = null
                 map_public_ip_on_launch         = false
@@ -202,7 +202,7 @@ vpcs = {
             }
 
             "SBN-BEDROCK-DB-PRIVATE-AZ2A-POC" = {
-                availability_zone               = "ap-northeast-2a"
+                availability_zone               = "us-east-1a"
                 cidr_block                      = "172.16.0.64/27"
                 ipv6_cidr_block                 = null
                 map_public_ip_on_launch         = false
@@ -217,7 +217,7 @@ vpcs = {
             }
 
             "SBN-BEDROCK-DB-PRIVATE-AZ2C-POC" = {
-                availability_zone               = "ap-northeast-2c"
+                availability_zone               = "us-east-1c"
                 cidr_block                      = "172.16.0.96/27"
                 ipv6_cidr_block                 = null
                 map_public_ip_on_launch         = false

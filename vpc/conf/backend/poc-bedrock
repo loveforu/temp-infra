@@ -1,0 +1,6 @@
+environment = "bedrock"
+s3_bucket = "bedrock-poc-infra-terraform-state"
+s3_folder_project = "poc"
+s3_bucket_region = "us-east-1"
+aws_region = "us-east-1"
+s3_tfstate_file = "terraform_poc-bedrock_vpc.tfstate"

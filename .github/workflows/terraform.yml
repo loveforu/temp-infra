@@ -144,6 +144,188 @@ jobs:
         chmod +x destroy.sh; \
         ./destroy.sh hee-dev
 
+  poc-vpc-create:
+    name: '1. POC VPC Create'
+    runs-on: ubuntu-latest
+    environment: createvpc
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    # AWS 리소스를 이용하기 위해서 추가
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.POC_AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.POC_AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+        
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: |
+        cd vpc; \
+        chmod +x setenv; \
+        source ./setenv conf/backend/poc-bedrock
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format
+      run: terraform fmt -check
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: |
+        cd vpc/root; \
+        terraform plan -var-file=../conf/poc/poc-bedrock.tfvars
+
+      # On push to "main", build or change infrastructure according to Terraform configuration files
+      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        cd vpc; \
+        chmod +x apply.sh; \
+        ./apply.sh poc-bedrock
+
+
+  poc-vpc-delete:
+    name: '1. POC VPC Delete'
+    runs-on: ubuntu-latest
+    environment: deletevpc
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    # AWS 리소스를 이용하기 위해서 추가
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.POC_AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.POC_AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+        
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: |
+        cd vpc; \
+        chmod +x setenv; \
+        source ./setenv conf/backend/poc-bedrock
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format
+      run: terraform fmt -check
+
+    - name: Terraform destroy
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        cd vpc; \
+        chmod +x destroy.sh; \
+        ./destroy.sh poc-bedrock
+
+  poc-sg-create:
+    name: '2. POC SG Create'
+    runs-on: ubuntu-latest
+    environment: createsg
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    # AWS 리소스를 이용하기 위해서 추가
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.POC_AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.POC_AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+        
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: |
+        cd security-group; \
+        chmod +x setenv; \
+        source ./setenv conf/backend/poc-bedrock
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format
+      run: terraform fmt -check
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: |
+        cd security-group/root; \
+        terraform plan -var-file=../conf/poc/poc-bedrock.tfvars
+
+      # On push to "main", build or change infrastructure according to Terraform configuration files
+      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        cd security-group; \
+        chmod +x apply.sh; \
+        ./apply.sh poc-bedrock
+
+
+  poc-sg-delete:
+    name: '2. POC SG Delete'
+    runs-on: ubuntu-latest
+    environment: deletesg
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    # AWS 리소스를 이용하기 위해서 추가
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.POC_AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.POC_AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+        
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: |
+        cd security-group; \
+        chmod +x setenv; \
+        source ./setenv conf/backend/poc-bedrock
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format
+      run: terraform fmt -check
+
+    - name: Terraform destroy
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        cd security-group; \
+        chmod +x destroy.sh; \
+        ./destroy.sh poc-bedrock
+
   sg-create:
     name: '2. SG Create'
     runs-on: ubuntu-latest

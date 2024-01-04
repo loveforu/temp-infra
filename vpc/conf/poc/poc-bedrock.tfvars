@@ -184,6 +184,23 @@ vpcs = {
                 }
             }
 
+            "SBN-BEDROCK-AP-PRIVATE-AZ2B-POC" = {
+                availability_zone               = "us-west-2b"
+                cidr_block                      = "100.64.3.64/28"
+                ipv6_cidr_block                 = null
+                map_public_ip_on_launch         = false
+                outpost_arn                     = null
+                assign_ipv6_address_on_creation = false
+                tags                            = {
+                    "Name"      = "SBN-BEDROCK-AP-PRIVATE-AZ2B-POC"
+                    "Service"   = ""
+                    "Stage"     = "BEDROCK"
+                    "Billing"   = "poc"
+                    "kubernetes.io/cluster/EKS-BEDROCK-POC" = "shared"
+                    "kubernetes.io/role/internal-elb"    = "1"
+                }
+            }
+
             "SBN-BEDROCK-AP-PRIVATE-AZ2C-POC" = {
                 availability_zone               = "us-west-2c"
                 cidr_block                      = "172.16.0.32/27"
@@ -193,6 +210,23 @@ vpcs = {
                 assign_ipv6_address_on_creation = false
                 tags                            = {
                     "Name"      = "SBN-BEDROCK-AP-PRIVATE-AZ2C-POC"
+                    "Service"   = ""
+                    "Stage"     = "BEDROCK"
+                    "Billing"   = "poc"
+                    "kubernetes.io/cluster/EKS-BEDROCK-POC" = "shared"
+                    "kubernetes.io/role/internal-elb"    = "1"
+                }
+            }
+
+            "SBN-BEDROCK-AP-PRIVATE-AZ2D-POC" = {
+                availability_zone               = "us-west-2d"
+                cidr_block                      = "100.64.3.80/28"
+                ipv6_cidr_block                 = null
+                map_public_ip_on_launch         = false
+                outpost_arn                     = null
+                assign_ipv6_address_on_creation = false
+                tags                            = {
+                    "Name"      = "SBN-BEDROCK-AP-PRIVATE-AZ2D-POC"
                     "Service"   = ""
                     "Stage"     = "BEDROCK"
                     "Billing"   = "poc"
